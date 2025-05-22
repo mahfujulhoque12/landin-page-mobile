@@ -40,7 +40,7 @@ const Gallery = () => {
       </div>
     <div className="mt-5">
         <Link
-          href="#"
+           href="#order"
           className="relative overflow-hidden text-xl font-bold text-white bg-green-500 px-6 py-3 rounded-md w-full block text-center group"
         >
           <span className="relative z-10">Bye Now</span>

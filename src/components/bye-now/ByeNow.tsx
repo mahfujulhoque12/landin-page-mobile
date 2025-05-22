@@ -44,6 +44,8 @@ const ByeNow = () => {
   };
 
   return (
+    <section id='order'>
+
     <MaxWidthWrapper>
       <div className="my-10 max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md border border-gray-300">
         <h2 className="text-2xl font-bold mb-4 text-center text-green-700">Buy Moringa Powder</h2>
@@ -124,6 +126,7 @@ const ByeNow = () => {
         </form>
       </div>
     </MaxWidthWrapper>
+    </section>
   );
 };
 
