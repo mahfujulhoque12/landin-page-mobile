@@ -10,7 +10,7 @@ const Badge = () => {
 
   return (
     <MaxWidthWrapper>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-5">
         {badges.map((badge) => (
           <div
             key={badge.id}
