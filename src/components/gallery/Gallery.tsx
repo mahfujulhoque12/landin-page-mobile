@@ -24,7 +24,7 @@ const Gallery = () => {
   return (
     <MaxWidthWrapper>
         <h1 className="text-gray-700 text-xl  font-bold text-center my-5">Gallery Images</h1>
-      <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+      <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {gallerys.map((img) => (
           <div key={img.id}>
             <Image
