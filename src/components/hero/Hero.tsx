@@ -39,7 +39,7 @@ const Hero = () => {
   return (
     <MaxWidthWrapper>
       {/* Make this the positioned container */}
-      <div className="relative">
+      <div className="relative h-[200px] overflow-hidden">
         <Carousel setApi={setApi} opts={{ loop: true }}>
           <CarouselContent>
             {banners.map((b) => (
@@ -60,7 +60,7 @@ const Hero = () => {
         </Carousel>
 
         {/* Dots are now absolutely positioned relative to the <div className="relative"> */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-2">
           {dotIndices.map((targetIndex, i) => (
             <button
               key={i}
