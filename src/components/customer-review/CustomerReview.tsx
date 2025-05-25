@@ -1,39 +1,21 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import { FaStar } from "react-icons/fa6";
 import { useGetReviewQuery } from "@/redux/features/api/reviewApi";
 import {
-  type CarouselApi,
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 const CustomerReview = () => {
   const { data: reviews = [], isLoading } = useGetReviewQuery();
-  const [api, setApi] = useState<CarouselApi>();
-  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // listen for slide changes
-  useEffect(() => {
-    if (!api) return;
-    const onSelect = () => setCurrentIndex(api.selectedScrollSnap());
-    api.on("select", onSelect);
-    onSelect(); // init
-    return () => void api.off("select", onSelect);
-  }, [api]);
 
-  const dotCount = 4;
-  const groupSize = Math.ceil(reviews.length / dotCount);
-  const dotIndices = Array.from({ length: dotCount }).map((_, i) =>
-    Math.min(i * groupSize, reviews.length - 1)
-  );
-  const activeDot = Math.min(
-    Math.floor(currentIndex / groupSize),
-    dotCount - 1
-  );
 
   if (isLoading) return <p>Loading…</p>;
 
@@ -44,7 +26,7 @@ const CustomerReview = () => {
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5 relative">
-        <Carousel setApi={setApi} opts={{ loop: true }}>
+        <Carousel>
           <CarouselContent>
             {reviews.map((review) => (
               <CarouselItem key={review.id}>
@@ -69,20 +51,9 @@ const CustomerReview = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
+               <CarouselPrevious />
+                    <CarouselNext />
         </Carousel>
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          {dotIndices.map((targetIndex, i) => (
-            <button
-              key={i}
-              className={`
-                h-2 w-2 rounded-full transition-transform
-                ${activeDot === i ? "bg-blue-600 scale-125" : "bg-gray-300"}
-              `}
-              aria-label={`Go to group ${i + 1}`}
-              onClick={() => api?.scrollTo(targetIndex)}
-            />
-          ))}
-        </div>
       </div>
     </MaxWidthWrapper>
   );
