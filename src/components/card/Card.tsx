@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import React, { useState } from 'react';
-import MaxWidthWrapper from '../MaxWidthWrapper';
+import Image from "next/image";
+import React, { useState } from "react";
+import MaxWidthWrapper from "../MaxWidthWrapper";
 
-import Link from 'next/link';
-import { FaTrashAlt } from 'react-icons/fa';
-import { useGetCardsQuery } from '@/redux/features/api/cardApi';
+import Link from "next/link";
+import { FaTrashAlt } from "react-icons/fa";
+import { useGetCardsQuery } from "@/redux/features/api/cardApi";
 
 const Card: React.FC = () => {
   const { data: cards = [], isLoading } = useGetCardsQuery();
@@ -20,19 +20,19 @@ const Card: React.FC = () => {
 
   // Calculate subtotal
   const subtotal = visibleCards.reduce((sum, card) => {
-    const qty = quantities[card.id] || 0;
-    const base = card.basePrice || 0;
+    const qty = quantities[card.id] || 1;
+    const base = card.basePrice || 1;
     return sum + base * qty;
-  }, 0);
+  }, 1);
 
   const taxRate = 0.1;
   const tax = subtotal * taxRate;
   const total = subtotal + tax;
 
-  const handleQuantity = (id: number, action: 'inc' | 'dec') => {
+  const handleQuantity = (id: number, action: "inc" | "dec") => {
     setQuantities((prev) => {
-      const current = prev[id] || 0;
-      const updated = action === 'inc' ? current + 1 : Math.max(current - 1, 0);
+      const current = prev[id] || 1;
+      const updated = action === "inc" ? current + 1 : Math.max(current - 1, 0);
       return { ...prev, [id]: updated };
     });
   };
@@ -44,11 +44,13 @@ const Card: React.FC = () => {
   return (
     <MaxWidthWrapper>
       <div className="flex flex-col gap-6">
-        <h3 className="text-center text-2xl font-bold text-gray-700 mt-3">Product List</h3>
+        <h3 className="text-center text-2xl font-bold text-gray-700 mt-3">
+          Product List
+        </h3>
 
         {visibleCards.map((card) => {
-          const qty = quantities[card.id] || 0;
-          const price = (card.basePrice || 0) * qty;
+          const qty = quantities[card.id] || 1;
+          const price = (card.basePrice || 1) * qty;
 
           return (
             <div
@@ -76,17 +78,33 @@ const Card: React.FC = () => {
 
               {/* Info */}
               <div className="flex flex-col flex-1">
-                <h2 className="text-lg font-semibold text-gray-800">{card.name}</h2>
+                <h2 className="text-lg font-semibold text-gray-800">
+                  {card.name}
+                </h2>
+                <h2 className="text-sm font-medium text-gray-800">
+                  <span className="font-normal">Size: </span> {card.size}
+                </h2>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="text-sm font-normal text-gray-800">
+                    Color:
+                  </span>
+                  <span
+                    className="w-4 h-4 rounded-full border border-gray-300"
+                    style={{ backgroundColor: card.color }}
+                    title={card.color}
+                  />
+                </div>
+
                 <div className="flex items-center gap-3 mt-2">
                   <button
-                    onClick={() => handleQuantity(card.id, 'dec')}
+                    onClick={() => handleQuantity(card.id, "dec")}
                     className="bg-gray-200 px-2 rounded hover:bg-gray-300"
                   >
                     −
                   </button>
                   <span className="text-gray-700">{qty}</span>
                   <button
-                    onClick={() => handleQuantity(card.id, 'inc')}
+                    onClick={() => handleQuantity(card.id, "inc")}
                     className="bg-gray-200 px-2 rounded hover:bg-gray-300"
                   >
                     +
