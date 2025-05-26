@@ -6,6 +6,8 @@ const products = [
     name: 'Organic Honey Jar',
     basePrice: 50,
     taxRate: 0.1,
+    size: '500ml',
+    color: '#F564A9', // Golden color
     image: '/product/product.png',
   },
   {
@@ -13,6 +15,8 @@ const products = [
     name: 'Natural Soap',
     basePrice: 15,
     taxRate: 0.1,
+    size: '100g',
+    color: '#FF0B55', // Beige
     image: '/product/product2.png',
   },
   {
@@ -20,9 +24,12 @@ const products = [
     name: 'Bee Wax Candle',
     basePrice: 25,
     taxRate: 0.07,
+    size: 'Medium',
+    color: '#AC1754', // Yellow
     image: '/product/product3.png',
   },
 ];
+
 
 export const GET = async () => {
   return NextResponse.json(products);

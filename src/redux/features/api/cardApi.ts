@@ -5,7 +5,9 @@ export interface Card {
   name: string;
   image: string;
   basePrice: number;
-taxRate: number;
+  taxRate: number;
+  size: string;
+  color: string;
 }
 
 export const cardApi = apiSlice.injectEndpoints({
