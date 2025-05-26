@@ -42,11 +42,11 @@ const PromoVideo: React.FC = () => {
   return (
     <section className="mt-5">
       <MaxWidthWrapper>
-        <h2 className="text-gray-700 text-xl font-bold text-center pb-5">
+        <h2 className="text-gray-700 text-2xl font-bold  pb-5">
           Promo Video
         </h2>
         <div className="relative space-y-8">
-          {videoData.map(({ url, title, des }, index) => {
+          {videoData.map(({ url }, index) => {
             const autoplayUrl = url.includes("?")
               ? `${url}&autoplay=1&mute=1`
               : `${url}?autoplay=1&mute=1`;
@@ -58,7 +58,7 @@ const PromoVideo: React.FC = () => {
                   videoRefs.current[index] = el;
                 }}
                 data-index={index}
-                className="p-4 relative shadow-md z-10 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow duration-300"
+                className=" relative shadow-md z-10 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="relative aspect-video w-full overflow-hidden rounded-md">
                   <iframe
@@ -70,10 +70,7 @@ const PromoVideo: React.FC = () => {
                     allowFullScreen
                   />
                 </div>
-                <h3 className="text-gray-600 py-1 text-lg font-semibold">
-                  {title}
-                </h3>
-                <p className="text-gray-600 text-sm font-normal">{des}</p>
+                
               </div>
             );
           })}
@@ -84,7 +81,7 @@ const PromoVideo: React.FC = () => {
              href="#order"
             className="relative overflow-hidden text-xl font-bold text-white bg-green-500 px-6 py-3 rounded-md w-full block text-center group"
           >
-            <span className="relative z-10">Get Your Product</span>
+            <span className="relative z-10">Order Now</span>
             <span className="absolute top-0 left-0 w-full h-full bg-white opacity-10 transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
           </Link>
         </div>

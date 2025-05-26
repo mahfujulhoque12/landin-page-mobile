@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export const GET = async () => {
   const specification = {
-    title: "Moringa Powder Product Specifications",
+    title: " Product Specifications",
     specs: [
       "Product Name: Moringa Powder",
       "Scientific Name: Moringa Oleifera",

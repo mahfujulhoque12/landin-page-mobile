@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 import { apiSlice } from "./apiSlice";
 
 export interface Review {
@@ -5,6 +6,9 @@ export interface Review {
   name: string;
   rating: number;
   comment: string;
+  img:string | StaticImageData,
+  customerType:string;
+  imgs:string[] | StaticImageData [];
 
 }
 
