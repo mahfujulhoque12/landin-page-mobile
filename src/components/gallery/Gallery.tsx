@@ -23,7 +23,7 @@ const Gallery = () => {
 
   return (
     <MaxWidthWrapper>
-        <h1 className="text-gray-700 text-xl  font-bold text-center my-5">Gallery Images</h1>
+        <h1 className="text-gray-700 text-2xl  font-bold  my-5">Gallery Images</h1>
       <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {gallerys.map((img) => (
           <div key={img.id}>
@@ -43,7 +43,7 @@ const Gallery = () => {
            href="#order"
           className="relative overflow-hidden text-xl font-bold text-white bg-green-500 px-6 py-3 rounded-md w-full block text-center group"
         >
-          <span className="relative z-10">Bye Now</span>
+          <span className="relative z-10">Order Now</span>
           <span className="absolute top-0 left-0 w-full h-full bg-white opacity-10 transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
         </Link>
       </div>
